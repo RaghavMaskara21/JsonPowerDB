@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 col-4">
         <h1  style="text-align: center; margin: 5% auto;">PUT Request</h1>
     <form class="row g-3 needs-validation" id="user" novalidate method="POST">
-        <div class="col-md-4">
+        <div class="col-12">
           <label for="validationCustom01" class="form-label">First name</label>
           <input type="text" class="form-control" id="firstname"  required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12">
           <label for="validationCustom02" class="form-label">Last name</label>
           <input type="text" class="form-control" id="lastname"  required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12">
           <label for="validationCustomUsername" class="form-label">Username</label>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
@@ -39,28 +39,28 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-12">
             <label for="validationCustom03" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" required>
             <div class="invalid-feedback">
               Please provide a valid email.
             </div>
           </div>
-        <div class="col-md-4">
+        <div class="col-12">
           <label for="validationCustom03" class="form-label">City</label>
           <input type="text" class="form-control" id="city" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12">
             <label for="validationCustom03" class="form-label">State</label>
             <input type="text" class="form-control" id="state" required>
             <div class="invalid-feedback">
               Please provide a valid State.
             </div>
           </div>
-        <div class="col-md-3">
+        <div class="col-12">
           <label for="validationCustom05" class="form-label">Pincode</label>
           <input type="number" class="form-control" id="pincode" required>
           <div class="invalid-feedback">
@@ -70,14 +70,16 @@
         <div class="col-12 mt-4">
           <button class="btn btn-success" type="submit" onclick="saveEmployee();">Submit form</button>
         </div>
+        <div class="col-12">
+          <a class="btn btn-primary" href="./index.html">Home Page</a>
+        </div>
       </form>
     </div>
-    <div class="container">
-      <div id="display" class="fs-3 mt-3 px-5">
-      </div>
-      <div class="">
-        <a class="btn btn-primary" href="./index.html">Home Page</a>
-      </div>
+    <div class="container col-5 my-5" style="display: none;" id="restext">
+      <div id="" class="fs-4 mt-3 px-5">
+        <h3>Response-</h3>
+        <textarea id="display" rows="7" cols="60"></textarea>
+      </div>      
     </div>
 </body>
 <script>

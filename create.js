@@ -106,6 +106,7 @@ function resetForm() {
 
 function saveEmployee() {
   var display = document.getElementById('display');
+  document.getElementById("restext").style.display = "block";
   var jsonStr = validateAndGetFormData();
   if (jsonStr === "") {
     return;
@@ -123,6 +124,7 @@ function saveEmployee() {
     "/api/iml"
   );
   jQuery.ajaxSetup({ async: true });
-  display.innerHTML= "Success <br> User Created Succesfully <br> " +JSON.stringify(resultObj);
+  display.innerHTML= JSON.stringify(resultObj);
+  window.scrollTo(0, document.body.scrollHeight);
   resetForm();
 }

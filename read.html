@@ -13,9 +13,10 @@
 </head>
 <body>
     <div class="container mt-5 col-4">
-        <h1>GET Request</h1>
+        <h1 style="text-align: center;">GET Request</h1>
     <form class="row g-3 needs-validation" id="user" novalidate method="POST">
         <div class="col-12">
+          <label for="colname" class="form-label">Key</label>
             <select class="form-select" aria-label="Default select example" name="colname" id="colname">
                 <option >Choose the Key</option>
                 <option value="firstname">First Name</option>
@@ -32,7 +33,7 @@
             <input type="text" class="form-control" id="colvalue"  required>
           </div>
         <div class="col-12">
-          <button class="btn btn-success" type="submit" onclick="getEmployee();">Submit form</button>
+          <button class="btn btn-success" type="submit" onclick="getEmployee();">GET Data</button>
         </div>
         <div class="col-12">
           <a class="btn btn-primary" href="./index.html">Home Page</a>
