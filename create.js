@@ -1,4 +1,4 @@
-$("#empId").focus();
+$("#user").focus();
 function validateAndGetFormData() {
   var firstnameVar = $("#firstname").val();
   if (firstnameVar === "") {
@@ -115,7 +115,6 @@ function saveEmployee() {
     "CRUD_Project_DB",
     "user"
   );
-  alert(putReqStr);
   jQuery.ajaxSetup({ async: false });
   var resultObj = executeCommand(
     putReqStr,
