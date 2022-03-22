@@ -114,6 +114,8 @@ function resetForm() {
 
 
 function updateEmployee() {
+  var display = document.getElementById('display');
+  document.getElementById("restext").style.display = "block";
   var jsonStr = validateAndGetFormData();
   if (jsonStr === "") {
     return;
@@ -130,7 +132,8 @@ function updateEmployee() {
     "http://api.login2explore.com:5577",
     "/api/iml"
   );
-  alert(JSON.stringify(resultObj));
   jQuery.ajaxSetup({ async: true });
+  display.innerHTML= JSON.stringify(resultObj);
+  window.scrollTo(0, document.body.scrollHeight);
   resetForm();
 }
