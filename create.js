@@ -1,90 +1,128 @@
+$("#empId").focus();
+function validateAndGetFormData() {
+  var firstnameVar = $("#firstname").val();
+  if (firstnameVar === "") {
+    alert("First Name is Required");
+    $("#firstname").focus();
+    return "";
+  }
+  var lastnameVar = $("#lastname").val();
+  if (lastnameVar === "") {
+    alert("Last Name is Required");
+    $("#lastname").focus();
+    return "";
+  }
+  var usernameVar = $("#username").val();
+  if (usernameVar === "") {
+    alert("Username is Required");
+    $("#username").focus();
+    return "";
+  }
+  var emailVar = $("#email").val();
+  if (emailVar === "") {
+    alert("Email id is Required");
+    $("#email").focus();
+    return "";
+  }
+  var cityVar = $("#city").val();
+  if (cityVar === "") {
+    alert("City is Required");
+    $("#city").focus();
+    return "";
+  }
+  var stateVar = $("#state").val();
+  if (stateVar === "") {
+    alert("State is Required");
+    $("#state").focus();
+    return "";
+  }
+  var pincodeVar = $("#pincode").val();
+  if (pincodeVar === "") {
+    alert("Pincode is Required");
+    $("#pincode").focus();
+    return "";
+  }
+  
+  var jsonStrObj = {
+    firstname: firstnameVar,
+    lastname: lastnameVar,
+    username: usernameVar,
+    email: emailVar,
+    city: cityVar,
+    state: stateVar,
+    pincode: pincodeVar,
+  };
+  return JSON.stringify(jsonStrObj);
+}
 
-      
 
-      $("#empId").focus();
-      function validateAndGetFormData() {
-        var empIdVar = $("#empId").val();
-        if (empIdVar === "") {
-          alert("Employee ID Required Value");
-          $("#empId").focus();
-          return "";
-        }
-        var empNameVar = $("#empName").val();
-        if (empNameVar === "") {
-          alert("Employee Name is Required Value");
-          $("#empName").focus();
-          return "";
-        }
-        var empEmailVar = $("#empEmail").val();
-        if (empEmailVar === "") {
-          alert("Employee Email is Required Value");
-          $("#empEmail").focus();
-          return "";
-        }
-        var jsonStrObj = {
-          empId: empIdVar,
-          empName: empNameVar,
-          empEmail: empEmailVar,
-        };
-        return JSON.stringify(jsonStrObj);
-      }
-      // This method is used to create PUT Json request.
-      function createPUTRequest(connToken, jsonObj, dbName, relName) {
-        var putRequest =
-          "{\n" +
-          '"token" : "' +
-          connToken +
-          '",' +
-          '"dbName": "' +
-          dbName +
-          '",\n' +
-          '"cmd" : "PUT",\n' +
-          '"rel" : "' +
-          relName +
-          '",' +
-          '"jsonStr": \n' +
-          jsonObj +
-          "\n" +
-          "}";
-        return putRequest;
-      }
-      function executeCommand(reqString, dbBaseUrl, apiEndPointUrl) {
-        var url = dbBaseUrl + apiEndPointUrl;
-        var jsonObj;
-        $.post(url, reqString, function (result) {
-          jsonObj = JSON.parse(result);
-        }).fail(function (result) {
-          var dataJsonObj = result.responseText;
-          jsonObj = JSON.parse(dataJsonObj);
-        });
-        return jsonObj;
-      }
-      function resetForm() {
-        $("#empId").val("");
-        $("#empName").val("");
-        $("#empEmail").val("");
-        $("#empId").focus();
-      }
-      function saveEmployee() {
-        var jsonStr = validateAndGetFormData();
-        if (jsonStr === "") {
-          return;
-        }
-        var putReqStr = createPUTRequest(
-          "90938779|-31948831936850569|90945976",
-          jsonStr,
-          "SAMPLE",
-          "EMP-REL"
-        );
-        alert(putReqStr);
-        jQuery.ajaxSetup({ async: false });
-        var resultObj = executeCommand(
-          putReqStr,
-          "http://api.login2explore.com:5577",
-          "/api/iml"
-        );
-        alert(JSON.stringify(resultObj));
-        jQuery.ajaxSetup({ async: true });
-        resetForm();
-      }
+// This method is used to create PUT Json request.
+function createPUTRequest(connToken, jsonObj, dbName, relName) {
+  var putRequest =
+    "{\n" +
+    '"token" : "' +
+    connToken +
+    '",' +
+    '"dbName": "' +
+    dbName +
+    '",\n' +
+    '"cmd" : "PUT",\n' +
+    '"rel" : "' +
+    relName +
+    '",' +
+    '"jsonStr": \n' +
+    jsonObj +
+    "\n" +
+    "}";
+  return putRequest;
+}
+
+
+function executeCommand(reqString, dbBaseUrl, apiEndPointUrl) {
+  var url = dbBaseUrl + apiEndPointUrl;
+  var jsonObj;
+  $.post(url, reqString, function (result) {
+    jsonObj = JSON.parse(result);
+  }).fail(function (result) {
+    var dataJsonObj = result.responseText;
+    jsonObj = JSON.parse(dataJsonObj);
+  });
+  return jsonObj;
+}
+
+
+function resetForm() {
+  $("#firstname").val("");
+  $("#lastname").val("");
+  $("#username").val("");
+  $("#email").val("");
+  $("#city").val("");
+  $("#state").val("");
+  $("#pincode").val("");
  
+  $("#firstname").focus();
+}
+
+
+function saveEmployee() {
+  var jsonStr = validateAndGetFormData();
+  if (jsonStr === "") {
+    return;
+  }
+  var putReqStr = createPUTRequest(
+    "90938779|-31948831936850569|90945976",
+    jsonStr,
+    "CRUD_Project_DB",
+    "user"
+  );
+  alert(putReqStr);
+  jQuery.ajaxSetup({ async: false });
+  var resultObj = executeCommand(
+    putReqStr,
+    "http://api.login2explore.com:5577",
+    "/api/iml"
+  );
+  alert(JSON.stringify(resultObj));
+  jQuery.ajaxSetup({ async: true });
+  resetForm();
+}
