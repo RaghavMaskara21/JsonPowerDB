@@ -65,6 +65,8 @@ function resetForm() {
 
 
 function getEmployee() {
+  var display = document.getElementById('display');
+  document.getElementById("restext").style.display = "block";
   var jsonStr = validateAndGetFormData();
   if (jsonStr === "") {
     return;
@@ -75,14 +77,13 @@ function getEmployee() {
     "CRUD_Project_DB",
     "user"
   );
-  alert(JSON.stringify(putReqStr));
   jQuery.ajaxSetup({ async: false });
   var resultObj = executeCommand(
     putReqStr,
     "http://api.login2explore.com:5577",
     "/api/irl"
-  );
-  alert(JSON.stringify(resultObj));
+  );  
   jQuery.ajaxSetup({ async: true });
+  display.textContent= JSON.stringify(resultObj);
   resetForm();
 }

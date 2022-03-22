@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5 col-4">
         <h1>GET Request</h1>
     <form class="row g-3 needs-validation" id="user" novalidate method="POST">
-        <div class="col-md-4">
+        <div class="col-12">
             <select class="form-select" aria-label="Default select example" name="colname" id="colname">
                 <option >Choose the Key</option>
                 <option value="firstname">First Name</option>
@@ -27,24 +27,45 @@
                 <option value="pincode">Pincode</option>
               </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-12">
             <label for="validationCustom02" class="form-label">Enter The Value</label>
             <input type="text" class="form-control" id="colvalue"  required>
           </div>
         <div class="col-12">
-          <button class="btn btn-primary" type="submit" onclick="getEmployee();">Submit form</button>
+          <button class="btn btn-success" type="submit" onclick="getEmployee();">Submit form</button>
+        </div>
+        <div class="col-12">
+          <a class="btn btn-primary" href="./index.html">Home Page</a>
         </div>
       </form>
     </div>
-    <div class="container">
-      <div id="display" class="fs-3 mt-3 px-5">
-      </div>
-      <div class="">
-        <a class="btn btn-primary" href="./index.html">Home Page</a>
-      </div>
+    <div class="container col-5 mt-5" style="display: none;" id="restext">
+      <div id="" class="fs-4 mt-3 px-5">
+        <h3>Response-</h3>
+        <textarea id="display" rows="7" cols="60"></textarea>
+      </div>      
     </div>
 </body>
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+'use strict'
 
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+var forms = document.querySelectorAll('.needs-validation')
 
+// Loop over them and prevent submission
+Array.prototype.slice.call(forms)
+  .forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
 
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 </html>
