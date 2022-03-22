@@ -105,6 +105,7 @@ function resetForm() {
 
 
 function saveEmployee() {
+  var display = document.getElementById('display');
   var jsonStr = validateAndGetFormData();
   if (jsonStr === "") {
     return;
@@ -121,7 +122,7 @@ function saveEmployee() {
     "http://api.login2explore.com:5577",
     "/api/iml"
   );
-  alert(JSON.stringify(resultObj));
   jQuery.ajaxSetup({ async: true });
+  display.innerHTML= "Success <br> User Created Succesfully <br> " +JSON.stringify(resultObj);
   resetForm();
 }
