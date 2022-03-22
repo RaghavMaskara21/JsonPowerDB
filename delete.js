@@ -57,6 +57,8 @@ function resetForm() {
 
 
 function deleteEmployee() {
+  var display = document.getElementById('display');
+  document.getElementById("restext").style.display = "block";
   var recordnum = $("#recordnumber").val(); 
 
   var putReqStr = createPUTRequest(
@@ -65,14 +67,16 @@ function deleteEmployee() {
     "CRUD_Project_DB",
     "user"
   );
-  alert(putReqStr);
+
   jQuery.ajaxSetup({ async: false });
   var resultObj = executeCommand(
     putReqStr,
     "http://api.login2explore.com:5577",
     "/api/iml"
   );
-  alert(JSON.stringify(resultObj));
+  
   jQuery.ajaxSetup({ async: true });
+  display.innerHTML= JSON.stringify(resultObj);
+  window.scrollTo(0, document.body.scrollHeight);
   resetForm();
 }
