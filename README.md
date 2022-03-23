@@ -23,11 +23,11 @@ JsonPowerDB (JPDB) is Next Generation, Creative and Disruptive Multi-mode DBMS_ 
 This app is built using JsonPowerDB Database where we can perform operations like Create, Read, Update and Delete. <br>
  [Live Demo](https://raghavmaskara21.github.io/JsonPowerDB/).
   
-## Home Page
+## HOME
  
 ![This is an image](imgs/home.png)
   
-## Create
+## CREATE
   
 We can insert single record in the database using PUT request. <br>
 Http method : POST <br>
@@ -48,9 +48,9 @@ End-point url : /api/iml (mentioned in command when different) <br>
 ```
 ![This is an image](imgs/create.png)
 
-## Read
+## READ
 
-We can retrieve single record from the database using GET_BY_KEY method
+We can retrieve single record from the database using GET_BY_KEY method <br>
 Http method : POST <br>
 Base url : http://api.login2explore.com:5577 <br>
 End-point url : /api/irl <br>
@@ -71,5 +71,47 @@ End-point url : /api/irl <br>
 ```
 ![This is an image](imgs/read.png)
 
-# Update
+## UPDATE
   
+We can Update multiple records in the database or add a new column in a record using UPDATE method <br>
+Http method : POST <br>
+Base url : http://api.login2explore.com:5577 <br>
+End-point url : /api/iml (mentioned in command when different) <br>
+  
+### Syntax-
+  ```
+  {
+    "token": <"connection-token">,
+    "cmd": "UPDATE",
+    <<"dbName": "database-name",>>
+    <<"rel": "relation-name",>>
+    "jsonStr": {
+        <"record-no">: {
+            <"column-name">: <"new-value">
+        }
+        <"record-no">: {
+            <"column-name">: <"new-value">
+        }
+    }
+}
+  ```
+  ![This is an image](imgs/update.png)
+  
+  ## DELETE
+  
+  We can remove records from the database using REMOVE method <br>
+  Http method : POST <br>
+Base url : http://api.login2explore.com:5577 <br>
+End-point url : /api/iml (mentioned in command when different) <br>
+  
+  ### Syntax
+  ```
+  {
+    "token": <"connection-token">,
+    "cmd": "REMOVE",
+    <<"dbName": <"database-name">,>>
+    <<"rel": <"relation-name">,>>
+    "record": <record-number | [record-number1,...]>
+}
+  ```
+   ![This is an image](imgs/delete.png)
