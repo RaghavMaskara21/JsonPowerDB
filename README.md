@@ -114,3 +114,6 @@ End-point url : /api/iml (mentioned in command when different) <br>
 }
   ```
    ![This is an image](imgs/delete.png)
+
+  ## Database
+  ![This is an image](imgs/db.png)
