@@ -21,7 +21,6 @@ JsonPowerDB (JPDB) is Next Generation, Creative and Disruptive Multi-mode DBMS_ 
   
 ## Description
 This app is built using JsonPowerDB Database where we can perform operations like Create, Read, Update and Delete. <br>
- [Live Demo](https://raghavmaskara21.github.io/JsonPowerDB/).
   
 ## HOME
  
